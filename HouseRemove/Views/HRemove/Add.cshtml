@@ -1,0 +1,74 @@
+﻿@model HouseRemove.Models.HRemoveViewModel
+@{
+    ViewBag.Title = "填写项目信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- page heading start-->
+<div class="page-heading">
+    <h3>
+        添加项目
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">主页</a>
+        </li>
+        <li class="active"> 添加项目 </li>
+    </ul>
+</div>
+
+<!-- page heading end-->
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    添加项目
+                </header>
+                <div class="panel-body">
+
+                    <div class="form">
+                        <form class="cmxform form-horizontal adminex-form" id="commentForm" method="post" action="/HRemove/Add" novalidate="novalidate">
+
+                            <div class="form-group ">
+                                <label for="InspectNumber" class="control-label col-lg-2">项目名称 </label>
+                                <div class="col-lg-6">
+                                    @Html.HiddenFor(model => model.Id)
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "项目名称", required = "" })
+                                </div>
+                            </div>                           
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-6">
+                                    <button class="btn btn-primary" type="submit">保存</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <!--validate-->
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/validation-init.js")
+
+<script>
+    $(document).ready(function(){
+            $(".custom-nav li").each(function(i,n){
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_setting').addClass("nav-active");
+            $(".subnav_hremove").addClass("active");
+    });
+</script>
+}
+
+

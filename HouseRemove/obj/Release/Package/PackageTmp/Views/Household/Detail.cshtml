@@ -1,0 +1,196 @@
+﻿@model HouseRemove.Models.Household
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- page heading start-->
+<div class="page-heading">
+    <h3>
+        房屋详情
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">主页</a>
+        </li>
+        <li class="active"> 房屋详情 </li>
+    </ul>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="profile-desk">
+                    <h1>@Model.HRemove.Name</h1>
+                    <span class="designation">【产权人】：@Model.Name 【身份证号】：@Model.CardNumber  【手机号】：@Model.Mobile 【公有权人】：@Model.PubliclyOwned 【继承人】：@Model.Successor</span>
+                     
+                    <div>
+                        搬迁时间：@Model.RemoveTime
+                    </div>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-body">
+                <ul class="p-info">
+                    <li>
+                        <div class="title">建筑年内</div>
+                        <div class="desk">@Model.BuildTime</div>
+                    </li>
+                    <li>
+                        <div class="title">建筑面积</div>
+                        <div class="desk">@Model.Area 平</div>
+                    </li>
+                    <li>
+                        <div class="title">实用面积</div>
+                        <div class="desk">@Model.UsefullArea 平</div>
+                    </li>
+                    <li>
+                        <div class="title">地址</div>
+                        <div class="desk">@Model.Address</div>
+                    </li>
+                    <li>
+                        <div class="title">使用情况</div>
+                        <div class="desk">@Model.UseStatus</div>
+                    </li>
+                    <li>
+                        <div class="title">产权证号</div>
+                        <div class="desk">@Model.PropertyRightNumber</div>
+                    </li>
+                    <li>
+                        <div class="title">产权附记</div>
+                        <div class="desk">@Model.PropertyRightRemark</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-body">
+                <ul class="p-info">
+                    <li>
+                        <div class="title">地块</div>
+                        <div class="desk">@Model.LandParcel</div>
+                    </li>
+                    <li>
+                        <div class="title">补偿类型</div>
+                        <div class="desk">@Model.CompensationType</div>
+                    </li>
+                    <li>
+                        <div class="title">房屋类型</div>
+                        <div class="desk">@Model.HouseType</div>
+                    </li>
+                    <li>
+                        <div class="title">房屋性质</div>
+                        <div class="desk">@Model.HouseProperty</div>
+                    </li>
+                    <li>
+                        <div class="title">房屋用途</div>
+                        <div class="desk">@Model.HouseUseFor</div>
+                    </li>
+                    <li>
+                        <div class="title">是否兼用房</div>
+                        <div class="desk">@Model.IsPartUse</div>
+                    </li>
+                    <li>
+                        <div class="title">承租单</div>
+                        <div class="desk">@Model.LesseeNumber</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-body">
+                <ul class="p-info">
+                    <li>
+                        <div class="title">评估价</div>
+                        <div class="desk">@Model.AssessPrice 元/平</div>
+                    </li>
+                    <li>
+                        <div class="title">装修补偿</div>
+                        <div class="desk">@Model.ZhuangxiuPrice 元/平</div>
+                    </li>
+                    <li>
+                        <div class="title">经营补偿</div>
+                        <div class="desk">@Model.BusinessCompensation 元</div>
+                    </li>
+                    <li>
+                        <div class="title">应发补偿</div>
+                        <div class="desk">@Model.YingFa 元</div>
+                    </li>
+                    <li>
+                        <div class="title">实发补偿</div>
+                        <div class="desk">@Model.ShiFa 元</div>
+                    </li>
+                    <li>
+                        <div class="title">验房单号</div>
+                        <div class="desk">@Model.InspectNumber</div>
+                    </li>
+                    <li>
+                        <div class="title">验房时间</div>
+                        <div class="desk">@Model.InspectTime</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @if (null != Model.UnSignInfo)
+    {
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body p-states">
+                    <div class="summary pull-left">
+                        <h3>@Model.SignStatus </h3><br/>
+                        <span>@Model.UnSignInfo.UnSignType</span>
+                        <p>@Model.UnSignInfo.UnSignRemark</p>
+                        <p>第一次约谈时间：@Model.UnSignInfo.YueTanTime</p>
+                        <p>第二次约谈时间：@Model.UnSignInfo.YueTan2Time</p>
+                        <p>第三次约谈时间：@Model.UnSignInfo.YueTan3Time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @if (null != Model.SignInfo)
+    {
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body p-states">
+                    <div class="summary pull-left">
+                        <h3>@Model.SignStatus </h3><br />
+                        <span>协议编号：@Model.SignInfo.SignNumber</span>
+                        <div>@Model.SignInfo.Remark</div>
+                        <p>资金标号：@Model.SignInfo.CapitalNumber</p>
+                        <p>领钱人：@Model.SignInfo.GetMoneyUser (@Model.SignInfo.GetMoneyTime 日领)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts{
+    <script>
+    $(document).ready(function(){
+            $(".custom-nav li").each(function(i,n){
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_householder').addClass("nav-active");
+            $(".subnav_householder").addClass("active");
+    });
+</script>    
+}
+
+

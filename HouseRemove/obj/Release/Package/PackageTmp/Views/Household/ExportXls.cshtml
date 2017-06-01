@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "导出数据";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <!--price start-->
+            <div class="text-center price-head">
+                <h1 class="color-terques"> 导出数据到Excel表格</h1>
+                <p>导出一定格式的数据到xls表格 </p>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <form action="ToXls" method="post">
+                    <div class="pricing-table">
+                        <div class="pricing-head">
+                            <h1> 项目剩余户数综合统计表 </h1>
+                        </div>
+                        <div class="pricing-quote">
+                            <i class="fa fa-table"></i>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li>
+                                @Html.DropDownList("hremove", (IEnumerable<SelectListItem>)ViewData["list"], new { @class = "form-control", style = "width:40%;margin-left:auto;margin-right:auto;" })
+                            </li>
+                            <li>选择项目后，点击导出按钮</li>
+                        </ul>
+                        <div class="price-actions">
+                            <button type="submit" class="btn">现在导出</button>                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <form action="ToXls2" method="post">
+                    <div class="pricing-table">
+                        <div class="pricing-head">
+                            <h1> 项目未拆迁户统计表 </h1>
+                        </div>
+                        <div class="pricing-quote">
+                            <i class="fa fa-table"></i>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li>
+                                @Html.DropDownList("hremove", (IEnumerable<SelectListItem>)ViewData["list"], new { @class = "form-control", style = "width:40%;margin-left:auto;margin-right:auto;" })
+                            </li>
+                            <li>选择项目后，点击导出按钮</li>
+                        </ul>
+                        <div class="price-actions">
+                            <button type="submit" class="btn">现在导出</button>
+                        </div>
+                    </div>
+                </form>
+            </div>            
+            <div class="col-lg-4 col-sm-4">
+                <form action="ToXls3" method="post">
+
+                    <div class="pricing-table">
+                        <div class="pricing-head">
+                            <h1> 项目住宅征收补偿金明细表  </h1>
+                        </div>
+                        <div class="pricing-quote">
+                            <i class="fa fa-table"></i>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li>
+                                @Html.DropDownList("hremove", (IEnumerable<SelectListItem>)ViewData["list"], new { @class = "form-control", style = "width:40%;margin-left:auto;margin-right:auto;" })
+                            </li>
+                            <li>选择项目后，点击导出按钮</li>
+                        </ul>
+                        <div class="price-actions">
+                            <button type="submit" class="btn">现在导出</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--price end-->
+        </div>
+    </div>
+</div>
+<!--body wrapper end-->
+
+@section scripts{
+    <script>
+    $(document).ready(function(){
+            $(".custom-nav li").each(function(i,n){
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_householder').addClass("nav-active");
+            $(".subnav_exportxls").addClass("active");
+    });
+</script>    
+}
+

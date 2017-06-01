@@ -1,0 +1,410 @@
+﻿@model HouseRemove.Models.HouseholdViewModel
+@using HouseRemove.Extensions
+@{
+    ViewBag.Title = "添加拆迁户";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles
+{
+    <!--pickers css-->
+    @Styles.Render("~/Scripts/bootstrap-datepicker/css/datepicker-custom.css")
+}
+
+<!-- page heading start-->
+<div class="page-heading">
+    <h3>
+        添加拆迁户
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">主页</a>
+        </li>
+        <li class="active"> 添加拆迁户 </li>
+    </ul>
+</div>
+<!-- page heading end-->
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    添加拆迁户
+                </header>
+                <div class="panel-body">
+                    <div class="form">
+                        <form class="cmxform form-horizontal adminex-form" id="commentForm" method="post" action="/Household/Add" novalidate="novalidate">
+                             
+                            <h4>项目信息</h4>
+                            <div class="form-group">
+                                <label for="hremove" class="control-label col-lg-2">项目归属 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownList("HRemoveName", (IEnumerable<SelectListItem>)ViewData["list"], new { @class = "form-control" })
+                                    <p class="help-block">您可以通过【系统管理】->【项目管理】管理您的拆迁项目</p>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="HouseType" class="control-label col-lg-2">房屋类型 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @{
+                                        var HouseTypeOption = new List<SelectListItem>();
+                                        HouseTypeOption.Insert(0, new SelectListItem
+                                        {
+                                            Text = "私房",
+                                            Value = "私房",
+                                            Selected = ViewBag.HouseType == "私房"
+                                        });
+                                        HouseTypeOption.Insert(1, new SelectListItem
+                                        {
+                                            Text = "公房",
+                                            Value = "公房",
+                                            Selected = ViewBag.HouseType == "公房"
+                                        });
+                                    }
+                                    @Html.DropDownListFor(model => model.HouseType, HouseTypeOption, new { @class = "form-control" })                                    
+                                    
+                                </div>
+                            </div>                            
+                            <div class="form-group ">
+                                <label for="RemoveTime" class="control-label col-lg-2">项目时间 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.RemoveTime, new { @class = "form-control default-date-picker", placeholder = "项目时间", required = "", @readonly = "readonly" })                                   
+                                </div>
+                            </div>
+
+
+
+
+                            <h4>个人信息</h4>
+                            <div class="form-group ">
+                                <label for="Name" class="control-label col-lg-2">姓名 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">                                   
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "姓名", required = "" })                                    
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="Mobile" class="control-label col-lg-2">手机</label>
+                                <div class="col-lg-6">                                    
+                                    @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", placeholder = "手机"})                                    
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="CardNumber" class="control-label col-lg-2">身份证号</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.CardNumber, new { @class = "form-control", placeholder = "身份证号"})                                    
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="PubliclyOwned" class="control-label col-lg-2">公有权人</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.PubliclyOwned, new { @class = "form-control", placeholder = "公有权人姓名" })                                    
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="Successor" class="control-label col-lg-2">继承人</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Successor, new { @class = "form-control", placeholder = "多个继承人请用；号分割 如   张三133xxxx；李四133xxx" })
+                                </div>
+                            </div>
+
+
+
+
+                            <h4>房屋信息</h4>
+                            <div class="form-group ">
+                                <label for="BuildTime" class="control-label col-lg-2">建筑年代 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">                                   
+                                    @Html.TextBoxFor(model => model.BuildTime, new { @class = "form-control", placeholder = "如：1986年", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="BuildTime" class="control-label col-lg-2">地址</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = ""})
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="UseStatus" class="control-label col-lg-2">使用状况 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @{
+                                        var UseStatusOption = new List<SelectListItem>();
+                                        UseStatusOption.Insert(0, new SelectListItem
+                                        {
+                                            Text = "自住",
+                                            Value = "自住",
+                                            Selected = ViewBag.UseStatus == "自住"
+                                        });
+                                        UseStatusOption.Insert(1, new SelectListItem
+                                        {
+                                            Text = "出租",
+                                            Value = "出租",
+                                            Selected = ViewBag.UseStatus == "出租"
+                                        });
+                                    }
+                                    @Html.DropDownListFor(model => model.UseStatus, UseStatusOption, new { @class = "form-control" })
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="HouseProperty" class="control-label col-lg-2">房屋性质 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @{
+                                        var HousePropertyOption = new List<SelectListItem>();
+                                        HousePropertyOption.Insert(0, new SelectListItem
+                                        {
+                                            Text = "私房",
+                                            Value = "私房",
+                                            Selected = ViewBag.HouseProperty == "私房"
+                                        });
+                                        HousePropertyOption.Insert(1, new SelectListItem
+                                        {
+                                            Text = "公房",
+                                            Value = "公房",
+                                            Selected = ViewBag.HouseProperty == "公房"
+                                        });
+                                        HousePropertyOption.Insert(2, new SelectListItem
+                                        {
+                                            Text = "代管",
+                                            Value = "代管",
+                                            Selected = ViewBag.HouseProperty == "代管"
+                                        });
+                                        HousePropertyOption.Insert(3, new SelectListItem
+                                        {
+                                            Text = "自管",
+                                            Value = "自管",
+                                            Selected = ViewBag.HouseProperty == "自管"
+                                        });
+                                        HousePropertyOption.Insert(4, new SelectListItem
+                                        {
+                                            Text = "其他",
+                                            Value = "其他",
+                                            Selected = ViewBag.HouseProperty == "其他"
+                                        });
+                                    }
+                                    @Html.DropDownListFor(model => model.HouseProperty, HousePropertyOption, new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                            <div class="form-group propertyrightnumberwarp">
+                                <label for="PropertyRightNumber" class="control-label col-lg-2">产权证号</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.PropertyRightNumber, new { @class = "form-control", placeholder = "" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="HouseUseFor" class="control-label col-lg-2">房屋用途 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @{
+                                        var HouseUseForOption = new List<SelectListItem>();
+                                        HouseUseForOption.Insert(0, new SelectListItem
+                                        {
+                                            Text = "住宅",
+                                            Value = "住宅",
+                                            Selected = ViewBag.HouseUseFor == "住宅"
+                                        });
+                                        HouseUseForOption.Insert(1, new SelectListItem
+                                        {
+                                            Text = "非住宅",
+                                            Value = "非住宅",
+                                            Selected = ViewBag.HouseUseFor == "非住宅"
+                                        });                                       
+                                    }
+                                    @Html.DropDownListFor(model => model.HouseUseFor, HouseUseForOption, new { @class = "form-control" })                                    
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ccomment" class="control-label col-lg-2">是否兼用房</label>
+                                <div class="col-lg-6">                                    
+                                    @{ 
+                                        var IsPartUseList = new List<string>();
+                                        IsPartUseList.Add("是");
+                                        IsPartUseList.Add("否");
+                                    }
+                                    @Html.RadioButtonListFor(model=>model.IsPartUse, IsPartUseList)
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="LandParcel" class="control-label col-lg-2">地块号 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.LandParcel, new { @class = "form-control", placeholder = "", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="Area" class="control-label col-lg-2">建筑面积 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Area, new { @class = "form-control", @type = "number", placeholder = "平", required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="Area" class="control-label col-lg-2">使用面积 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.UsefullArea, new { @class = "form-control", @type = "number", placeholder = "平", required = "required" })
+                                </div>
+                            </div>
+                            
+                            <div class="form-group ">
+                                <label for="LesseeNumber" class="control-label col-lg-2">承租单 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.LesseeNumber, new { @class = "form-control", placeholder = "" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="PropertyRightRemark" class="control-label col-lg-2">产权附记</label>
+                                <div class="col-lg-6">
+                                    @Html.TextAreaFor(model => model.PropertyRightRemark, new { @class = "form-control", placeholder = "产权附记" })
+                                </div>
+                            </div>
+
+                            <h4>补偿信息</h4>
+                            <div class="form-group ">
+                                <label for="CompensationType" class="control-label col-lg-2">补偿类型 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @{
+                                        var CompensationTypeOption = new List<SelectListItem>();
+                                        CompensationTypeOption.Insert(0, new SelectListItem
+                                        {
+                                            Text = "货币",
+                                            Value = "货币",
+                                            Selected = ViewBag.CompensationType == "货币"
+                                        });
+                                        CompensationTypeOption.Insert(1, new SelectListItem
+                                        {
+                                            Text = "房屋",
+                                            Value = "房屋",
+                                            Selected = ViewBag.CompensationType == "房屋"
+                                        });
+                                        CompensationTypeOption.Insert(2, new SelectListItem
+                                        {
+                                            Text = "非住宅",
+                                            Value = "非住宅",
+                                            Selected = ViewBag.CompensationType == "非住宅"
+                                        });
+                                    }
+                                    @Html.DropDownListFor(model => model.CompensationType, CompensationTypeOption, new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="AssessPrice" class="control-label col-lg-2">评估价格 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.AssessPrice, new { @class = "form-control", @type = "number", placeholder = "元/平", required = "required" })
+                                </div>
+                                <div class="col-lg-4">
+                                    元/平
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ZhuangxiuPrice" class="control-label col-lg-2">装修补偿 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">                                    
+                                    @Html.TextBoxFor(model => model.ZhuangxiuPrice, new { @class = "form-control", @type = "number", placeholder = "元/平", required = "required" })
+                                </div>
+                                <div class="col-lg-4">
+                                    元/平
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ZhuangxiuPrice" class="control-label col-lg-2">经营性补偿 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.BusinessCompensation, new { @class = "form-control", @type = "number", placeholder = "元", required = "required" })
+                                </div>
+                                <div class="col-lg-4">
+                                    元
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="YingFa" class="control-label col-lg-2">应发补偿 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">                                    
+                                    @Html.TextBoxFor(model => model.YingFa, new { @class = "form-control", @type = "number", placeholder = "元", required = "required" })
+                                </div>
+                                <div class="col-lg-4">
+                                    元
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ShiFa" class="control-label col-lg-2">实发补偿 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.ShiFa, new { @class = "form-control", @type = "number", placeholder = "元", required = "required" })
+                                </div>
+                                <div class="col-lg-4">
+                                    元
+                                </div>
+                            </div>                            
+                            <div class="form-group ">
+                                <label for="SignStatus" class="control-label col-lg-2">是否签署补偿协议</label>
+                                <div class="col-lg-6">
+                                    @{
+                                        var SignStatusList = new List<string>();
+                                        SignStatusList.Add("已签署");
+                                        SignStatusList.Add("待签署");
+                                    }
+                                    @Html.RadioButtonListFor(model => model.SignStatus, SignStatusList) 
+                                    <p class="help-block">注意：当更改签署类型时，请下一步<span class="text-danger">务必完善</span>签署状态的附加信息</p>                                   
+                                </div>
+                            </div>                                                     
+                            <h4>交房验房信息</h4>
+                            <div class="form-group ">
+                                <label for="InspectNumber" class="control-label col-lg-2">验房单号 </label>
+                                <div class="col-lg-6">
+                                    @Html.HiddenFor(model => model.Id)
+                                    @Html.TextBoxFor(model => model.InspectNumber, new { @class = "form-control", @type = "number", placeholder = "验房单号" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="InspectTime" class="control-label col-lg-2">验房时间</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.InspectTime, new { @class = "form-control default-date-picker", placeholder = "验房时间", @readonly = "readonly" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-6">
+                                    <button class="btn btn-primary" type="submit">下一步</button>
+                                    <button class="btn btn-default" type="reset">重填</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+
+    <!--pickers plugins-->
+    @Scripts.Render("~/Scripts/bootstrap-datepicker/js/bootstrap-datepicker.js")
+    <!--pickers initialization-->
+    @Scripts.Render("~/Scripts/pickers-init.js")
+    <!--validate-->
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/validation-init.js")
+
+<script>
+    $(document).ready(function(){
+            $(".custom-nav li").each(function(i,n){
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_householder').addClass("nav-active");
+            $(".subnav_addhouseholder").addClass("active");
+
+            $("#HouseProperty").bind("change", function () {
+                var rightnumberwarp = $(".propertyrightnumberwarp");
+                if($(this).val()!="私房")
+                {
+                    rightnumberwarp.slideUp();
+                }
+                else
+                {
+                    rightnumberwarp.slideDown();
+                }
+            });
+    });
+</script>
+}
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8799f86822aa47d8bf4f361ac40c0e08" Name="Diagram1" ZoomLevel="95" >
+        <EntityTypeShape EntityType="hrEntitys.Manager" Width="1.5" PointX="2.375" PointY="1.375" />
+        <EntityTypeShape EntityType="hrEntitys.HRemove" Width="1.5" PointX="9.25" PointY="2.125" />
+        <EntityTypeShape EntityType="hrEntitys.Household" Width="2.75" PointX="5.375" PointY="2.75" />
+        <EntityTypeShape EntityType="hrEntitys.LoginLog" Width="1.5" PointX="1.75" PointY="4.375" />
+        <EntityTypeShape EntityType="hrEntitys.RedHeadFile" Width="1.5" PointX="9" PointY="5.375" />
+        <AssociationConnector Association="hrEntitys.ManagerLoginLog" />
+        <AssociationConnector Association="hrEntitys.HRemoveHousehold" />
+        <EntityTypeShape EntityType="hrEntitys.SystemSetting" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="hrEntitys.SignInfo" Width="1.5" PointX="9.125" PointY="9.5" />
+        <EntityTypeShape EntityType="hrEntitys.UnSignInfo" Width="2.875" PointX="11.875" PointY="8" />
+        <AssociationConnector Association="hrEntitys.HouseholdSignInfo" />
+        <AssociationConnector Association="hrEntitys.HouseholdUnSignInfo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

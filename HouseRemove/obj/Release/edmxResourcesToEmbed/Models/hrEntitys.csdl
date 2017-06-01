@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="hrEntitys" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="hrEntitysContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Managers" EntityType="hrEntitys.Manager" />
+    <EntitySet Name="HRemoves" EntityType="hrEntitys.HRemove" />
+    <EntitySet Name="Householdes" EntityType="hrEntitys.Household" />
+    <EntitySet Name="LoginLogs" EntityType="hrEntitys.LoginLog" />
+    <EntitySet Name="RedHeadFiles" EntityType="hrEntitys.RedHeadFile" />
+    <AssociationSet Name="ManagerLoginLog" Association="hrEntitys.ManagerLoginLog">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="LoginLog" EntitySet="LoginLogs" />
+    </AssociationSet>
+    <AssociationSet Name="HRemoveHousehold" Association="hrEntitys.HRemoveHousehold">
+      <End Role="HRemove" EntitySet="HRemoves" />
+      <End Role="Household" EntitySet="Householdes" />
+    </AssociationSet>
+    <EntitySet Name="SystemSettings" EntityType="hrEntitys.SystemSetting" />
+    <EntitySet Name="SignInfos" EntityType="hrEntitys.SignInfo" />
+    <EntitySet Name="UnSignInfos" EntityType="hrEntitys.UnSignInfo" />
+    <AssociationSet Name="HouseholdSignInfo" Association="hrEntitys.HouseholdSignInfo">
+      <End Role="Household" EntitySet="Householdes" />
+      <End Role="SignInfo" EntitySet="SignInfos" />
+    </AssociationSet>
+    <AssociationSet Name="HouseholdUnSignInfo" Association="hrEntitys.HouseholdUnSignInfo">
+      <End Role="Household" EntitySet="Householdes" />
+      <End Role="UnSignInfo" EntitySet="UnSignInfos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Manager">
+    <Documentation>
+      <Summary>管理员</Summary>
+      <LongDescription>管理员</LongDescription>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="100" />
+    <NavigationProperty Name="LoginLogs" Relationship="hrEntitys.ManagerLoginLog" FromRole="Manager" ToRole="LoginLog" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="HRemove">
+    <Documentation>
+      <Summary>项目信息</Summary>
+      <LongDescription>项目信息</LongDescription>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" />
+    <NavigationProperty Name="Householdes" Relationship="hrEntitys.HRemoveHousehold" FromRole="HRemove" ToRole="Household" />
+  </EntityType>
+  <EntityType Name="Household">
+    <Documentation>
+      <Summary>拆迁信息</Summary>
+      <LongDescription>拆迁信息</LongDescription>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HouseType" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>房屋类型</Summary>
+        <LongDescription>房屋类型</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="HouseProperty" Type="String" Nullable="false">
+      <Documentation>
+        <Summary>房屋性质</Summary>
+        <LongDescription>房屋性质</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="CompensationType" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>补偿类型</Summary>
+        <LongDescription>补偿类型</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="RemoveTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>拆迁时间</Summary>
+        <LongDescription>拆迁时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>姓名</Summary>
+        <LongDescription>姓名</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="CardNumber" Type="String" Nullable="true" MaxLength="20">
+      <Documentation>
+        <Summary>身份证号</Summary>
+        <LongDescription>身份证号</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Mobile" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="PubliclyOwned" Type="String" Nullable="true" MaxLength="100">
+      <Documentation>
+        <Summary>公有权人</Summary>
+        <LongDescription>公有权人</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Successor" Type="String" Nullable="true">
+      <Documentation>
+        <Summary>继承人</Summary>
+        <LongDescription>继承人</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="BuildTime" Type="String" Nullable="false" MaxLength="200">
+      <Documentation>
+        <Summary>建筑年代</Summary>
+        <LongDescription>建筑年代</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Address" Type="String" Nullable="true" MaxLength="200" />
+    <Property Name="HouseUseFor" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>房屋用途</Summary>
+        <LongDescription>房屋用途</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="UseStatus" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>使用状况</Summary>
+        <LongDescription>使用状况</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="IsPartUse" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>是否兼用房</Summary>
+        <LongDescription>是否兼用房</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="LandParcel" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>地块号</Summary>
+        <LongDescription>地块号</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Area" Type="Single" Nullable="false">
+      <Documentation>
+        <Summary>建筑面积</Summary>
+        <LongDescription>建筑面积</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="UsefullArea" Type="Single" Nullable="false">
+      <Documentation>
+        <Summary>实用面积</Summary>
+        <LongDescription>实用面积</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="PropertyRightNumber" Type="String" Nullable="true" MaxLength="100">
+      <Documentation>
+        <Summary>产权证号</Summary>
+        <LongDescription>产权证号</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="PropertyRightRemark" Type="String" Nullable="true">
+      <Documentation>
+        <Summary>产权证备注</Summary>
+        <LongDescription>产权证备注</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="LesseeNumber" Type="String" Nullable="true" MaxLength="100">
+      <Documentation>
+        <Summary>承租单</Summary>
+        <LongDescription>承租单</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="AssessPrice" Type="Decimal" Nullable="false" Scale="2">
+      <Documentation>
+        <Summary>评估价格</Summary>
+        <LongDescription>评估价格</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="ZhuangxiuPrice" Type="Decimal" Nullable="false" Scale="2">
+      <Documentation>
+        <Summary>装修补偿</Summary>
+        <LongDescription>装修补偿</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="BusinessCompensation" Type="Decimal" Nullable="false" Scale="2">
+      <Documentation>
+        <Summary>经营性补偿金</Summary>
+        <LongDescription>经营性补偿金</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="YingFa" Type="Decimal" Nullable="false" Scale="2" />
+    <Property Name="ShiFa" Type="Decimal" Nullable="false" Scale="2" />
+    <Property Name="SignStatus" Type="String" Nullable="false" MaxLength="100">
+      <Documentation>
+        <Summary>签订状态</Summary>
+        <LongDescription>签订状态</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="InspectTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>验房时间</Summary>
+        <LongDescription>验房时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="InspectNumber" Type="String" Nullable="true" MaxLength="100">
+      <Documentation>
+        <Summary>验房单号</Summary>
+        <LongDescription>验房单号</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>录入时间</Summary>
+        <LongDescription>录入时间</LongDescription>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="HRemove" Relationship="hrEntitys.HRemoveHousehold" FromRole="Household" ToRole="HRemove" />
+    <Property Name="HRemoveId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SignInfo" Relationship="hrEntitys.HouseholdSignInfo" FromRole="Household" ToRole="SignInfo" />
+    <NavigationProperty Name="UnSignInfo" Relationship="hrEntitys.HouseholdUnSignInfo" FromRole="Household" ToRole="UnSignInfo" />
+    <Property Name="ComAreaRenge" Type="String" Nullable="true">
+      <Documentation>
+        <LongDescription>房屋补偿面积范围</LongDescription>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="LoginLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginTime" Type="DateTime" Nullable="false" />
+    <Property Name="Ip" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Client" Type="String" Nullable="false" MaxLength="100" />
+    <NavigationProperty Name="Manager" Relationship="hrEntitys.ManagerLoginLog" FromRole="LoginLog" ToRole="Manager" />
+    <Property Name="ManagerId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RedHeadFile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="PubTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>下发时间</Summary>
+        <LongDescription>下发时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="ZhiXingTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>接受执行时间</Summary>
+        <LongDescription>接受执行时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Org" Type="String" Nullable="false" MaxLength="200">
+      <Documentation>
+        <Summary>下发机关</Summary>
+        <LongDescription>下发机关</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="200" />
+    <Property Name="FilePath" Type="String" Nullable="true" MaxLength="300" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false">
+      <Documentation>
+        <Summary>上传时间</Summary>
+        <LongDescription>上传时间</LongDescription>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="ManagerLoginLog">
+    <End Type="hrEntitys.Manager" Role="Manager" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="hrEntitys.LoginLog" Role="LoginLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LoginLog">
+        <PropertyRef Name="ManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HRemoveHousehold">
+    <End Type="hrEntitys.HRemove" Role="HRemove" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="hrEntitys.Household" Role="Household" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRemove">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Household">
+        <PropertyRef Name="HRemoveId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SystemSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" Nullable="false" />
+    <Property Name="Value" Type="String" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="true" />
+  </EntityType>
+  <EntityType Name="SignInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SignNumber" Type="String" Nullable="true" MaxLength="200" />
+    <Property Name="CapitalNumber" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="GiveHouseTime" Type="DateTime" Nullable="true" />
+    <Property Name="GetMoneyUser" Type="String" Nullable="true" MaxLength="100">
+      <Documentation>
+        <Summary>领钱人签章</Summary>
+        <LongDescription>领钱人签章</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="GetMoneyTime" Type="DateTime" Nullable="true" />
+    <Property Name="FileCabinetNumber" Type="String" Nullable="true" MaxLength="200">
+      <Documentation>
+        <Summary>档案柜编号</Summary>
+        <LongDescription>档案柜编号</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="BatchNumber" Type="String" Nullable="true" MaxLength="200">
+      <Documentation>
+        <Summary>批次编号</Summary>
+        <LongDescription>批次编号</LongDescription>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Household" Relationship="hrEntitys.HouseholdSignInfo" FromRole="SignInfo" ToRole="Household" />
+    <Property Name="Remark" Type="String" Nullable="true" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="UnSignInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UnSignType" Type="String" Nullable="true" MaxLength="100" />
+    <Property Name="UnSignRemark" Type="String" Nullable="true" MaxLength="200" />
+    <Property Name="YueTanTime" Type="DateTime" Nullable="true" />
+    <Property Name="YueTan2Time" Type="DateTime" Nullable="true" />
+    <Property Name="YueTan3Time" Type="DateTime" Nullable="true" />
+    <Property Name="PingGuBaoGaoTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>评估报告具体时间</Summary>
+        <LongDescription>评估报告具体时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="PingGuBaoGaoSongDaTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>评估报告送达时间</Summary>
+        <LongDescription>评估报告送达时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="BaoSongFaGuiKeTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>报送法规科时间</Summary>
+        <LongDescription>报送法规科时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="TuiJuanTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>退卷时间</Summary>
+        <LongDescription>退卷时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="ZaiCiSongBaoTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>再次送报时间</Summary>
+        <LongDescription>再次送报时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="DanHuBuChangXiaDaTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>单户补偿下达时间</Summary>
+        <LongDescription>单户补偿下达时间</LongDescription>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Household" Relationship="hrEntitys.HouseholdUnSignInfo" FromRole="UnSignInfo" ToRole="Household" />
+    <Property Name="DanHuBuChangSongDaTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>单户补偿送达时间</Summary>
+        <LongDescription>单户补偿送达时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="QiSuQiDaoQiTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>起诉期到期时间</Summary>
+        <LongDescription>起诉其到期时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="CuiGaoShuSongDaTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>催告书送达时间</Summary>
+        <LongDescription>催告书送达时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="QiangZhiZhiXingTiBaoFaGuiKeTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>强制执行提报法规科时间</Summary>
+        <LongDescription>强制执行提报法规科时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="FaYuanLiAnTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>法院立案时间</Summary>
+        <LongDescription>法院立案时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="XiaDaZhuiYuZhiXingCaiDingTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>下达准予执行裁定时间</Summary>
+        <LongDescription>下达准予执行裁定时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="CheHuiTime" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>撤回时间</Summary>
+        <LongDescription>撤回时间</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="CheHuiYuanYin" Type="String" Nullable="true" MaxLength="400">
+      <Documentation>
+        <Summary>撤回原因</Summary>
+        <LongDescription>撤回原因</LongDescription>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="HouseholdSignInfo">
+    <End Type="hrEntitys.Household" Role="Household" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="hrEntitys.SignInfo" Role="SignInfo" Multiplicity="0..1" />
+  </Association>
+  <Association Name="HouseholdUnSignInfo">
+    <End Type="hrEntitys.Household" Role="Household" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="hrEntitys.UnSignInfo" Role="UnSignInfo" Multiplicity="0..1" />
+  </Association>
+</Schema>

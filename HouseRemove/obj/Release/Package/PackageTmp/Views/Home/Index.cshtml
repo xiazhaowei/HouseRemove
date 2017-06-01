@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "首页";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- page heading start-->
+<div class="page-heading">
+    <h3>
+        统计信息
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">主页</a>
+        </li>
+        <li class="active"> 统计信息 </li>
+    </ul>
+    <div class="state-info">
+        <section class="panel">
+            <div class="panel-body">
+                <div class="summary">
+                    <span>拆迁户累计</span>
+                    <h3 class="red-txt">4512</h3>
+                </div>
+                <div id="income" class="chart-bar"></div>
+            </div>
+        </section>
+        <section class="panel">
+            <div class="panel-body">
+                <div class="summary">
+                    <span>赔偿金额总计</span>
+                    <h3 class="green-txt">￥ 45,600</h3>
+                </div>
+                <div id="expense" class="chart-bar"></div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- page heading end-->
+<!--body wrapper start-->
+<div class="wrapper">
+
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function(){
+            $(".custom-nav li").each(function(i,n){
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_home').addClass("active");
+        });
+    </script>
+}
+

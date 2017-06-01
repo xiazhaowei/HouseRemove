@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="hrEntitysStoreContainer" CdmEntityContainer="hrEntitysContainer">
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.Manager)">
+        <MappingFragment StoreEntitySet="Managers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRemoves">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.HRemove)">
+        <MappingFragment StoreEntitySet="HRemoves">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Householdes">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.Household)">
+        <MappingFragment StoreEntitySet="Householdes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HouseType" ColumnName="HouseType" />
+          <ScalarProperty Name="HouseProperty" ColumnName="HouseProperty" />
+          <ScalarProperty Name="CompensationType" ColumnName="CompensationType" />
+          <ScalarProperty Name="RemoveTime" ColumnName="RemoveTime" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="PubliclyOwned" ColumnName="PubliclyOwned" />
+          <ScalarProperty Name="Successor" ColumnName="Successor" />
+          <ScalarProperty Name="BuildTime" ColumnName="BuildTime" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="HouseUseFor" ColumnName="HouseUseFor" />
+          <ScalarProperty Name="UseStatus" ColumnName="UseStatus" />
+          <ScalarProperty Name="IsPartUse" ColumnName="IsPartUse" />
+          <ScalarProperty Name="LandParcel" ColumnName="LandParcel" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="UsefullArea" ColumnName="UsefullArea" />
+          <ScalarProperty Name="PropertyRightNumber" ColumnName="PropertyRightNumber" />
+          <ScalarProperty Name="PropertyRightRemark" ColumnName="PropertyRightRemark" />
+          <ScalarProperty Name="LesseeNumber" ColumnName="LesseeNumber" />
+          <ScalarProperty Name="AssessPrice" ColumnName="AssessPrice" />
+          <ScalarProperty Name="ZhuangxiuPrice" ColumnName="ZhuangxiuPrice" />
+          <ScalarProperty Name="BusinessCompensation" ColumnName="BusinessCompensation" />
+          <ScalarProperty Name="YingFa" ColumnName="YingFa" />
+          <ScalarProperty Name="ShiFa" ColumnName="ShiFa" />
+          <ScalarProperty Name="SignStatus" ColumnName="SignStatus" />
+          <ScalarProperty Name="InspectTime" ColumnName="InspectTime" />
+          <ScalarProperty Name="InspectNumber" ColumnName="InspectNumber" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="HRemoveId" ColumnName="HRemoveId" />
+          <ScalarProperty Name="ComAreaRenge" ColumnName="ComAreaRenge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.LoginLog)">
+        <MappingFragment StoreEntitySet="LoginLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RedHeadFiles">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.RedHeadFile)">
+        <MappingFragment StoreEntitySet="RedHeadFiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="PubTime" ColumnName="PubTime" />
+          <ScalarProperty Name="ZhiXingTime" ColumnName="ZhiXingTime" />
+          <ScalarProperty Name="Org" ColumnName="Org" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemSettings">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.SystemSetting)">
+        <MappingFragment StoreEntitySet="SystemSettings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SignInfos">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.SignInfo)">
+        <MappingFragment StoreEntitySet="SignInfos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SignNumber" ColumnName="SignNumber" />
+          <ScalarProperty Name="CapitalNumber" ColumnName="CapitalNumber" />
+          <ScalarProperty Name="GiveHouseTime" ColumnName="GiveHouseTime" />
+          <ScalarProperty Name="GetMoneyUser" ColumnName="GetMoneyUser" />
+          <ScalarProperty Name="GetMoneyTime" ColumnName="GetMoneyTime" />
+          <ScalarProperty Name="FileCabinetNumber" ColumnName="FileCabinetNumber" />
+          <ScalarProperty Name="BatchNumber" ColumnName="BatchNumber" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnSignInfos">
+      <EntityTypeMapping TypeName="IsTypeOf(hrEntitys.UnSignInfo)">
+        <MappingFragment StoreEntitySet="UnSignInfos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UnSignType" ColumnName="UnSignType" />
+          <ScalarProperty Name="UnSignRemark" ColumnName="UnSignRemark" />
+          <ScalarProperty Name="YueTanTime" ColumnName="YueTanTime" />
+          <ScalarProperty Name="YueTan2Time" ColumnName="YueTan2Time" />
+          <ScalarProperty Name="YueTan3Time" ColumnName="YueTan3Time" />
+          <ScalarProperty Name="PingGuBaoGaoTime" ColumnName="PingGuBaoGaoTime" />
+          <ScalarProperty Name="PingGuBaoGaoSongDaTime" ColumnName="PingGuBaoGaoSongDaTime" />
+          <ScalarProperty Name="BaoSongFaGuiKeTime" ColumnName="BaoSongFaGuiKeTime" />
+          <ScalarProperty Name="TuiJuanTime" ColumnName="TuiJuanTime" />
+          <ScalarProperty Name="ZaiCiSongBaoTime" ColumnName="ZaiCiSongBaoTime" />
+          <ScalarProperty Name="DanHuBuChangXiaDaTime" ColumnName="DanHuBuChangXiaDaTime" />
+          <ScalarProperty Name="DanHuBuChangSongDaTime" ColumnName="DanHuBuChangSongDaTime" />
+          <ScalarProperty Name="QiSuQiDaoQiTime" ColumnName="QiSuQiDaoQiTime" />
+          <ScalarProperty Name="CuiGaoShuSongDaTime" ColumnName="CuiGaoShuSongDaTime" />
+          <ScalarProperty Name="QiangZhiZhiXingTiBaoFaGuiKeTime" ColumnName="QiangZhiZhiXingTiBaoFaGuiKeTime" />
+          <ScalarProperty Name="FaYuanLiAnTime" ColumnName="FaYuanLiAnTime" />
+          <ScalarProperty Name="XiaDaZhuiYuZhiXingCaiDingTime" ColumnName="XiaDaZhuiYuZhiXingCaiDingTime" />
+          <ScalarProperty Name="CheHuiTime" ColumnName="CheHuiTime" />
+          <ScalarProperty Name="CheHuiYuanYin" ColumnName="CheHuiYuanYin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="HouseholdSignInfo" TypeName="hrEntitys.HouseholdSignInfo" StoreEntitySet="SignInfos">
+      <EndProperty Name="Household">
+        <ScalarProperty Name="Id" ColumnName="Household_Id" />
+      </EndProperty>
+      <EndProperty Name="SignInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HouseholdUnSignInfo" TypeName="hrEntitys.HouseholdUnSignInfo" StoreEntitySet="UnSignInfos">
+      <EndProperty Name="Household">
+        <ScalarProperty Name="Id" ColumnName="Household_Id" />
+      </EndProperty>
+      <EndProperty Name="UnSignInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

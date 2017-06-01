@@ -1,0 +1,125 @@
+﻿@model HouseRemove.Models.SignInfoViewModel
+@{
+    ViewBag.Title = "签署信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles
+{
+    <!--pickers css-->
+    @Styles.Render("~/Scripts/bootstrap-datepicker/css/datepicker-custom.css")
+}
+<!-- page heading start-->
+<div class="page-heading">
+    <h3>
+        添加拆迁户
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">主页</a>
+        </li>
+        <li class="active"> 添加拆迁户 </li>
+    </ul>
+</div>
+<!-- page heading end-->
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    签署信息
+                </header>
+                <div class="panel-body">
+                    <div class="form">
+                        <form class="cmxform form-horizontal adminex-form" id="commentForm" method="post" action="/Household/EditSignInfo" novalidate="novalidate">
+                            <div class="form-group ">
+                                <label for="SignNumber" class="control-label col-lg-2">签署协议编号 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">  
+                                    @Html.HiddenFor(model => model.Id) 
+                                    @Html.HiddenFor(model => model.HouseHoldId)                                 
+                                    @Html.TextBoxFor(model=>model.SignNumber,new { @class= "form-control",@type="number", placeholder = "签署协议编号",required=""})
+                                </div>
+                            </div> 
+                            <div class="form-group ">
+                                <label for="CapitalNumber" class="control-label col-lg-2">资金表号 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.CapitalNumber, new { @class = "form-control",  placeholder = "格式为：XX-XX", required = "" })
+                                </div>
+                            </div>                            
+                            @*<div class="form-group ">
+                                <label for="GiveHouseTime" class="control-label col-lg-2">交房时间</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.GiveHouseTime, new { @class = "form-control",  placeholder = "交房时间"})
+                                </div>
+                            </div>*@
+                            <div class="form-group ">
+                                <label for="CapitalNumber" class="control-label col-lg-2">领钱人</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.GetMoneyUser, new { @class = "form-control",  placeholder = "领钱人姓名" })
+                                </div>
+                            </div> 
+                            <div class="form-group ">
+                                <label for="GetMoneyTime" class="control-label col-lg-2">领钱时间 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.GetMoneyTime, new { @class = "form-control default-date-picker", placeholder = "领钱时间", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <h4>归档信息</h4>
+                            <div class="form-group ">
+                                <label for="FileCabinetNumber" class="control-label col-lg-2">归档档案柜 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.FileCabinetNumber, new { @class = "form-control", placeholder = "归档档案柜", required="required" })                                    
+                                </div>
+                            </div> 
+                            <div class="form-group ">
+                                <label for="BatchNumber" class="control-label col-lg-2">批次编号 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.BatchNumber, new { @class = "form-control", placeholder = "批次编号", required = "required" })                                    
+                                </div>
+                            </div> 
+                            <h4>备注</h4>
+                            <div class="form-group ">
+                                <label for="Remark" class="control-label col-lg-2">备注</label>
+                                <div class="col-lg-6">
+                                    @Html.TextAreaFor(model=>model.Remark,new { @class= "form-control",placeholder="" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-6">
+                                    <button class="btn btn-primary" type="submit">保存</button>
+                                    @Html.ActionLink("返回","Index","Household",new { @class="btn btn-default"})                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <!--pickers plugins-->
+    @Scripts.Render("~/Scripts/bootstrap-datepicker/js/bootstrap-datepicker.js")
+    <!--pickers initialization-->
+    @Scripts.Render("~/Scripts/pickers-init.js")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/validation-init.js")
+
+<script>
+    $(document).ready(function(){
+            $(".custom-nav li").each(function(i,n){
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_householder').addClass("nav-active");
+            $(".subnav_addhouseholder").addClass("active");
+    });
+</script>
+}
+

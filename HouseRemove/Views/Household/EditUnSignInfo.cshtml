@@ -1,0 +1,244 @@
+﻿@model HouseRemove.Models.UnSignInfoViewModel
+@{
+    ViewBag.Title = "签署信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles
+{
+    <!--pickers css-->
+    @Styles.Render("~/Scripts/bootstrap-datepicker/css/datepicker-custom.css")
+}
+<!-- page heading start-->
+<div class="page-heading">
+    <h3>
+        添加拆迁户
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">主页</a>
+        </li>
+        <li class="active"> 添加拆迁户 </li>
+    </ul>
+</div>
+<!-- page heading end-->
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    未签署信息
+                </header>
+                <div class="panel-body">
+                    <div class="form">
+                        <form class="cmxform form-horizontal adminex-form" id="commentForm" method="post" action="/Household/EditUnSignInfo" novalidate="novalidate">
+
+                            <div class="form-group ">
+                                <label for="UnSignType" class="control-label col-lg-2">未签署原因 <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
+                                    @{
+                                        var UnSignTypeOption = new List<SelectListItem>();
+                                        UnSignTypeOption.Insert(0, new SelectListItem
+                                        {
+                                            Text = "析产户",
+                                            Value = "析产户",
+                                            Selected = ViewBag.UnSignType == "析产户"
+                                        });
+                                        UnSignTypeOption.Insert(1, new SelectListItem
+                                        {
+                                            Text = "产权人或继承人已故",
+                                            Value = "产权人或继承人已故",
+                                            Selected = ViewBag.UnSignType == "产权人或继承人已故"
+                                        });
+                                        UnSignTypeOption.Insert(2, new SelectListItem
+                                        {
+                                            Text = "对评估价不满",
+                                            Value = "对评估价不满",
+                                            Selected = ViewBag.UnSignType == "对评估价不满"
+                                        });
+                                        UnSignTypeOption.Insert(3, new SelectListItem
+                                        {
+                                            Text = "对未认定结果有异议",
+                                            Value = "对未认定结果有异议",
+                                            Selected = ViewBag.UnSignType == "对未认定结果有异议"
+                                        });
+                                        UnSignTypeOption.Insert(4, new SelectListItem
+                                        {
+                                            Text = "要求现房或多套安置房屋",
+                                            Value = "要求现房或多套安置房屋",
+                                            Selected = ViewBag.UnSignType == "要求现房或多套安置房屋"
+                                        });
+                                        UnSignTypeOption.Insert(5, new SelectListItem
+                                        {
+                                            Text = "代管房",
+                                            Value = "代管房",
+                                            Selected = ViewBag.UnSignType == "代管房"
+                                        });
+                                        UnSignTypeOption.Insert(6, new SelectListItem
+                                        {
+                                            Text = "非住宅",
+                                            Value = "非住宅",
+                                            Selected = ViewBag.UnSignType == "非住宅"
+                                        });
+                                        UnSignTypeOption.Insert(7, new SelectListItem
+                                        {
+                                            Text = "其他",
+                                            Value = "其他",
+                                            Selected = ViewBag.UnSignType == "其他"
+                                        });
+                                    }
+                                    @Html.DropDownListFor(model => model.UnSignType, UnSignTypeOption, new { @class = "form-control" })  
+                                    @Html.HiddenFor(model => model.Id)
+                                    @Html.HiddenFor(model => model.HouseHoldId)
+                                                                      
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ccomment" class="control-label col-lg-2">未签署备注</label>
+                                <div class="col-lg-6">
+                                    @Html.TextAreaFor(model => model.UnSignRemark, new { @class = "form-control", placeholder = "未签署备注" })
+                                </div>
+                            </div>
+
+                            <h4>约谈信息</h4>
+                            <div class="form-group ">
+                                <label for="ChatTime1" class="control-label col-lg-2">第一次约谈时间</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.YueTanTime, new { @class = "form-control default-date-picker", placeholder = "第一次约谈时间", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ChatTime2" class="control-label col-lg-2">第二次约谈时间</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.YueTan2Time, new { @class = "form-control default-date-picker", placeholder = "第二次约谈时间", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ChatTime3" class="control-label col-lg-2">第三次约谈时间</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.YueTan3Time, new { @class = "form-control default-date-picker", placeholder = "第三次约谈时间", @readonly = "readonly" })
+                                </div>
+                            </div>
+
+
+                            <h4>法律流程信息</h4>
+                            <div class="form-group ">
+                                <label for="ChatTime1" class="control-label col-lg-2">评估报告出具时间</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.PingGuBaoGaoTime, new { @class = "form-control default-date-picker", placeholder = "评估报告出具时间", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ChatTime2" class="control-label col-lg-2">评估报告送达时间</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.PingGuBaoGaoSongDaTime, new { @class = "form-control default-date-picker", placeholder = "评估报告送达时间",  @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ChatTime3" class="control-label col-lg-2">报送法规科时间</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.BaoSongFaGuiKeTime, new { @class = "form-control default-date-picker", placeholder = "报送法规科时间", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ChatTime4" class="control-label col-lg-2">退卷时间</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.TuiJuanTime, new { @class = "form-control default-date-picker", placeholder = "退卷时间", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ProsecuteTime" class="control-label col-lg-2">单户补偿下达时间</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.DanHuBuChangXiaDaTime, new { @class = "form-control default-date-picker", placeholder = "单户补偿下达时间",  @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="LawfulTime" class="control-label col-lg-2">单户补偿送达时间 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.DanHuBuChangSongDaTime, new { @class = "form-control default-date-picker", placeholder = "单户补偿送达时间",  @readonly = "readonly" })
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="LawfulTime" class="control-label col-lg-2">送达后（6个月起诉期）到期时间 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.QiSuQiDaoQiTime, new { @class = "form-control default-date-picker", placeholder = "月起诉期到期时间",  @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="LawfulTime" class="control-label col-lg-2">催告书送达完成时间 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.CuiGaoShuSongDaTime, new { @class = "form-control default-date-picker", placeholder = "催告书送达完成时间", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="LawfulTime" class="control-label col-lg-2">强制执行提报法规科时间 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.QiangZhiZhiXingTiBaoFaGuiKeTime, new { @class = "form-control default-date-picker", placeholder = "强制执行提报法规科时间", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="LawfulTime" class="control-label col-lg-2">法院立案时间 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.FaYuanLiAnTime, new { @class = "form-control default-date-picker", placeholder = "法院立案时间",  @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="LawfulTime" class="control-label col-lg-2">下达准予执行裁定时间 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.XiaDaZhuiYuZhiXingCaiDingTime, new { @class = "form-control default-date-picker", placeholder = "下达准予执行裁定时间",  @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="LawfulTime" class="control-label col-lg-2">撤回时间 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.CheHuiTime, new { @class = "form-control default-date-picker", placeholder = "撤回时间",  @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="ccomment" class="control-label col-lg-2">撤回原因</label>
+                                <div class="col-lg-6">
+                                    @Html.TextAreaFor(model => model.CheHuiYuanYin, new { @class = "form-control", placeholder = "撤回原因" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-6">
+                                    <button class="btn btn-primary" type="submit">保存</button>
+                                    <button class="btn btn-default" type="reset">重填</button>
+                                    @Html.ActionLink("返回", "Index", "Household", new { @class = "btn btn-default" })
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+     <!--pickers plugins-->
+    @Scripts.Render("~/Scripts/bootstrap-datepicker/js/bootstrap-datepicker.js")
+    <!--pickers initialization-->
+    @Scripts.Render("~/Scripts/pickers-init.js")
+
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/validation-init.js")
+<script>
+    $(document).ready(function(){
+            $(".custom-nav li").each(function(i,n){
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_householder').addClass("nav-active");
+            $(".subnav_addhouseholder").addClass("active");
+    });
+</script>
+}
+

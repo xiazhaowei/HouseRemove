@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Members" EntityType="Model1.Store.Members" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CashTransactions" EntityType="Model1.Store.CashTransactions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PointTransactions" EntityType="Model1.Store.PointTransactions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BaoDanTransactions" EntityType="Model1.Store.BaoDanTransactions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChongXiaoTransactions" EntityType="Model1.Store.ChongXiaoTransactions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CoinPrices" EntityType="Model1.Store.CoinPrices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SystemSettings" EntityType="Model1.Store.SystemSettings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemberLevel" EntityType="Model1.Store.MemberLevel" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LockedCoins" EntityType="Model1.Store.LockedCoins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BankInfo" EntityType="Model1.Store.BankInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="News" EntityType="Model1.Store.News" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IPLogs" EntityType="Model1.Store.IPLogs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SysStatistics" EntityType="Model1.Store.SysStatistics" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Goodses" EntityType="Model1.Store.Goodses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DeliverAddresses" EntityType="Model1.Store.DeliverAddresses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="Model1.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Skus" EntityType="Model1.Store.Skus" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="MemberCashTransaction" Association="Model1.Store.MemberCashTransaction">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="CashTransaction" EntitySet="CashTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="MemberPointTransaction" Association="Model1.Store.MemberPointTransaction">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="PointTransaction" EntitySet="PointTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="MemberMember" Association="Model1.Store.MemberMember">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="Member1" EntitySet="Members" />
+    </AssociationSet>
+    <AssociationSet Name="MemberBaoDanTransaction" Association="Model1.Store.MemberBaoDanTransaction">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="BaoDanTransaction" EntitySet="BaoDanTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="MemberChongXiaoTransaction" Association="Model1.Store.MemberChongXiaoTransaction">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="ChongXiaoTransaction" EntitySet="ChongXiaoTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="MemberLockedCoin" Association="Model1.Store.MemberLockedCoin">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="LockedCoin" EntitySet="LockedCoins" />
+    </AssociationSet>
+    <AssociationSet Name="MemberIPLog" Association="Model1.Store.MemberIPLog">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="IPLog" EntitySet="IPLogs" />
+    </AssociationSet>
+    <AssociationSet Name="MemberMemberLevel" Association="Model1.Store.MemberMemberLevel">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="MemberLevel" EntitySet="MemberLevel" />
+    </AssociationSet>
+    <AssociationSet Name="BaoDanTransactionChongXiaoTransaction" Association="Model1.Store.BaoDanTransactionChongXiaoTransaction">
+      <End Role="BaoDanTransaction" EntitySet="BaoDanTransactions" />
+      <End Role="ChongXiaoTransaction" EntitySet="ChongXiaoTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="BaoDanTransactionCashTransaction" Association="Model1.Store.BaoDanTransactionCashTransaction">
+      <End Role="BaoDanTransaction" EntitySet="BaoDanTransactions" />
+      <End Role="CashTransaction" EntitySet="CashTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="BaoDanTransactionPointTransaction" Association="Model1.Store.BaoDanTransactionPointTransaction">
+      <End Role="BaoDanTransaction" EntitySet="BaoDanTransactions" />
+      <End Role="PointTransaction" EntitySet="PointTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="BaoDanTransactionLockedCoin" Association="Model1.Store.BaoDanTransactionLockedCoin">
+      <End Role="BaoDanTransaction" EntitySet="BaoDanTransactions" />
+      <End Role="LockedCoin" EntitySet="LockedCoins" />
+    </AssociationSet>
+    <AssociationSet Name="MemberBankInfo" Association="Model1.Store.MemberBankInfo">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="BankInfo" EntitySet="BankInfo" />
+    </AssociationSet>
+    <AssociationSet Name="MemberDeliverAddress" Association="Model1.Store.MemberDeliverAddress">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="DeliverAddress" EntitySet="DeliverAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="GoodsSku" Association="Model1.Store.GoodsSku">
+      <End Role="Goods" EntitySet="Goodses" />
+      <End Role="Sku" EntitySet="Skus" />
+    </AssociationSet>
+    <AssociationSet Name="MemberOrder" Association="Model1.Store.MemberOrder">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Members">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="RealName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Password1" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password2" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Cash1" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Cash2" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Point1" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Point2" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ChongXiao1" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ChongXiao2" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Coin1" Type="decimal" Nullable="false" Scale="6" />
+    <Property Name="Coin2" Type="decimal" Nullable="false" Scale="6" />
+    <Property Name="RegisterTime" Type="datetime" Nullable="false" />
+    <Property Name="Achievement" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="TotalBaoDan" Type="decimal" Nullable="true" Scale="2" />
+    <Property Name="Mobile" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TiXianStatus" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TiBiStatus" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IdSubmitted" Type="bit" Nullable="true" />
+    <Property Name="IdApproved" Type="bit" Nullable="true" />
+    <Property Name="IdentityPath" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ApprovedBy" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Referral_Id" Type="int" Nullable="true" />
+    <Property Name="MemberLevel_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CashTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="Fee" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BaoDanTransactionId" Type="int" Nullable="true" />
+    <Property Name="Bank" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BankName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BankAccount" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="FileUrl" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="RemitBank" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="RemitUserName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="RemitNumber" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PointTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BaoDanTransactionId" Type="int" Nullable="true" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="BaoDanTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Scale="6" />
+    <Property Name="Price" Type="decimal" Nullable="false" Scale="3" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="Fee" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ChongXiaoTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BaoDanTransactionId" Type="int" Nullable="true" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="CoinPrices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" Scale="3" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="MemberLevel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Level" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RefundRate" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="MemberCount" Type="int" Nullable="false" />
+    <Property Name="MemberAchievement" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Achievement" Type="decimal" Nullable="false" Scale="2" />
+  </EntityType>
+  <EntityType Name="LockedCoins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LastPrice" Type="decimal" Nullable="false" Scale="3" />
+    <Property Name="NextPrice" Type="decimal" Nullable="false" Scale="3" />
+    <Property Name="Price" Type="decimal" Nullable="false" Scale="3" />
+    <Property Name="TotalAmount" Type="decimal" Nullable="false" Scale="6" />
+    <Property Name="LockedAmount" Type="decimal" Nullable="false" Scale="6" />
+    <Property Name="AvailabeAmount" Type="decimal" Nullable="false" Scale="6" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="BaoDanTransaction_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BankInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bank" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Account" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="URL" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Member_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IPLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IP" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Client" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysStatistics">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="BaoDanBuyAmount" Type="decimal" Nullable="true" Scale="6" />
+    <Property Name="BaoDanSellAmount" Type="decimal" Nullable="true" Scale="6" />
+    <Property Name="NewMemberAmount" Type="smallint" Nullable="true" />
+    <Property Name="TotalCashTransactionAmount" Type="decimal" Nullable="true" Scale="2" />
+    <Property Name="BeginCoinPrice" Type="decimal" Nullable="true" Scale="3" />
+    <Property Name="EndCoinPrice" Type="decimal" Nullable="true" Scale="3" />
+    <Property Name="MaxCoinPrice" Type="decimal" Nullable="true" Scale="3" />
+    <Property Name="MinCoinPrice" Type="decimal" Nullable="true" Scale="3" />
+  </EntityType>
+  <EntityType Name="Goodses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Detail" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Stock" Type="int" Nullable="false" />
+    <Property Name="SellCount" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Pics" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MarcketPrice" Type="decimal" Nullable="false" Scale="2" />
+  </EntityType>
+  <EntityType Name="DeliverAddresses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="DetailAddress" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Mobile" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="LastUseTime" Type="datetime" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderNumber" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ExpressAddress" Type="nvarchar" Nullable="false" MaxLength="400" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="ExpressNumber" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="GoodsPic" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="BuyCount" Type="int" Nullable="false" />
+    <Property Name="GoodsPrice" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="SkuInfo" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="GoodsId" Type="int" Nullable="false" />
+    <Property Name="GoodsName" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="ExpressName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="UnExpressNumber" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="PayPoints" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="PayChongXiao" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="PayCash" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="UnExpressName" Type="nvarchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Skus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Stock" Type="int" Nullable="false" />
+    <Property Name="GoodsId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="MemberCashTransaction">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="1" />
+    <End Role="CashTransaction" Type="Model1.Store.CashTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CashTransaction">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberPointTransaction">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="1" />
+    <End Role="PointTransaction" Type="Model1.Store.PointTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PointTransaction">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberMember">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="*" />
+    <End Role="Member1" Type="Model1.Store.Members" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Member1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="Referral_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberBaoDanTransaction">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="1" />
+    <End Role="BaoDanTransaction" Type="Model1.Store.BaoDanTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BaoDanTransaction">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberChongXiaoTransaction">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="1" />
+    <End Role="ChongXiaoTransaction" Type="Model1.Store.ChongXiaoTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChongXiaoTransaction">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberLockedCoin">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="1" />
+    <End Role="LockedCoin" Type="Model1.Store.LockedCoins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LockedCoin">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberIPLog">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="1" />
+    <End Role="IPLog" Type="Model1.Store.IPLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IPLog">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberMemberLevel">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="*" />
+    <End Role="MemberLevel" Type="Model1.Store.MemberLevel" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="MemberLevel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="MemberLevel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BaoDanTransactionChongXiaoTransaction">
+    <End Role="BaoDanTransaction" Type="Model1.Store.BaoDanTransactions" Multiplicity="0..1" />
+    <End Role="ChongXiaoTransaction" Type="Model1.Store.ChongXiaoTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaoDanTransaction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChongXiaoTransaction">
+        <PropertyRef Name="BaoDanTransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BaoDanTransactionCashTransaction">
+    <End Role="BaoDanTransaction" Type="Model1.Store.BaoDanTransactions" Multiplicity="0..1" />
+    <End Role="CashTransaction" Type="Model1.Store.CashTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaoDanTransaction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CashTransaction">
+        <PropertyRef Name="BaoDanTransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BaoDanTransactionPointTransaction">
+    <End Role="BaoDanTransaction" Type="Model1.Store.BaoDanTransactions" Multiplicity="0..1" />
+    <End Role="PointTransaction" Type="Model1.Store.PointTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaoDanTransaction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PointTransaction">
+        <PropertyRef Name="BaoDanTransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BaoDanTransactionLockedCoin">
+    <End Role="BaoDanTransaction" Type="Model1.Store.BaoDanTransactions" Multiplicity="1" />
+    <End Role="LockedCoin" Type="Model1.Store.LockedCoins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaoDanTransaction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LockedCoin">
+        <PropertyRef Name="BaoDanTransaction_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberBankInfo">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="0..1" />
+    <End Role="BankInfo" Type="Model1.Store.BankInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BankInfo">
+        <PropertyRef Name="Member_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberDeliverAddress">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="1" />
+    <End Role="DeliverAddress" Type="Model1.Store.DeliverAddresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeliverAddress">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GoodsSku">
+    <End Role="Goods" Type="Model1.Store.Goodses" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sku" Type="Model1.Store.Skus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goods">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sku">
+        <PropertyRef Name="GoodsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberOrder">
+    <End Role="Member" Type="Model1.Store.Members" Multiplicity="1" />
+    <End Role="Order" Type="Model1.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

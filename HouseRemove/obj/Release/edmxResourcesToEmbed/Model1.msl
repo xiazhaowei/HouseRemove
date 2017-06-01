@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Member)">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="Password1" ColumnName="Password1" />
+          <ScalarProperty Name="Password2" ColumnName="Password2" />
+          <ScalarProperty Name="Cash1" ColumnName="Cash1" />
+          <ScalarProperty Name="Cash2" ColumnName="Cash2" />
+          <ScalarProperty Name="Point1" ColumnName="Point1" />
+          <ScalarProperty Name="Point2" ColumnName="Point2" />
+          <ScalarProperty Name="ChongXiao1" ColumnName="ChongXiao1" />
+          <ScalarProperty Name="ChongXiao2" ColumnName="ChongXiao2" />
+          <ScalarProperty Name="Coin1" ColumnName="Coin1" />
+          <ScalarProperty Name="Coin2" ColumnName="Coin2" />
+          <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+          <ScalarProperty Name="Achievement" ColumnName="Achievement" />
+          <ScalarProperty Name="TotalBaoDan" ColumnName="TotalBaoDan" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TiXianStatus" ColumnName="TiXianStatus" />
+          <ScalarProperty Name="TiBiStatus" ColumnName="TiBiStatus" />
+          <ScalarProperty Name="IdSubmitted" ColumnName="IdSubmitted" />
+          <ScalarProperty Name="IdApproved" ColumnName="IdApproved" />
+          <ScalarProperty Name="IdentityPath" ColumnName="IdentityPath" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CashTransactions">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.CashTransaction)">
+        <MappingFragment StoreEntitySet="CashTransactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="BaoDanTransactionId" ColumnName="BaoDanTransactionId" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="FileUrl" ColumnName="FileUrl" />
+          <ScalarProperty Name="RemitBank" ColumnName="RemitBank" />
+          <ScalarProperty Name="RemitUserName" ColumnName="RemitUserName" />
+          <ScalarProperty Name="RemitNumber" ColumnName="RemitNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PointTransactions">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.PointTransaction)">
+        <MappingFragment StoreEntitySet="PointTransactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="BaoDanTransactionId" ColumnName="BaoDanTransactionId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaoDanTransactions">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.BaoDanTransaction)">
+        <MappingFragment StoreEntitySet="BaoDanTransactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChongXiaoTransactions">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.ChongXiaoTransaction)">
+        <MappingFragment StoreEntitySet="ChongXiaoTransactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="BaoDanTransactionId" ColumnName="BaoDanTransactionId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoinPrices">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.CoinPrice)">
+        <MappingFragment StoreEntitySet="CoinPrices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemSettings">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.SystemSetting)">
+        <MappingFragment StoreEntitySet="SystemSettings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberLevel">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.MemberLevel)">
+        <MappingFragment StoreEntitySet="MemberLevel">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="RefundRate" ColumnName="RefundRate" />
+          <ScalarProperty Name="MemberCount" ColumnName="MemberCount" />
+          <ScalarProperty Name="MemberAchievement" ColumnName="MemberAchievement" />
+          <ScalarProperty Name="Achievement" ColumnName="Achievement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LockedCoins">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.LockedCoin)">
+        <MappingFragment StoreEntitySet="LockedCoins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LastPrice" ColumnName="LastPrice" />
+          <ScalarProperty Name="NextPrice" ColumnName="NextPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="LockedAmount" ColumnName="LockedAmount" />
+          <ScalarProperty Name="AvailabeAmount" ColumnName="AvailabeAmount" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BankInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.BankInfo)">
+        <MappingFragment StoreEntitySet="BankInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.News)">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IPLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.IPLog)">
+        <MappingFragment StoreEntitySet="IPLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysStatistics">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.SysStatistics)">
+        <MappingFragment StoreEntitySet="SysStatistics">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BaoDanBuyAmount" ColumnName="BaoDanBuyAmount" />
+          <ScalarProperty Name="BaoDanSellAmount" ColumnName="BaoDanSellAmount" />
+          <ScalarProperty Name="NewMemberAmount" ColumnName="NewMemberAmount" />
+          <ScalarProperty Name="TotalCashTransactionAmount" ColumnName="TotalCashTransactionAmount" />
+          <ScalarProperty Name="BeginCoinPrice" ColumnName="BeginCoinPrice" />
+          <ScalarProperty Name="EndCoinPrice" ColumnName="EndCoinPrice" />
+          <ScalarProperty Name="MaxCoinPrice" ColumnName="MaxCoinPrice" />
+          <ScalarProperty Name="MinCoinPrice" ColumnName="MinCoinPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goodses">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Goods)">
+        <MappingFragment StoreEntitySet="Goodses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="SellCount" ColumnName="SellCount" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Pics" ColumnName="Pics" />
+          <ScalarProperty Name="MarcketPrice" ColumnName="MarcketPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliverAddresses">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.DeliverAddress)">
+        <MappingFragment StoreEntitySet="DeliverAddresses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="DetailAddress" ColumnName="DetailAddress" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="LastUseTime" ColumnName="LastUseTime" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Order)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ExpressAddress" ColumnName="ExpressAddress" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ExpressNumber" ColumnName="ExpressNumber" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="GoodsPic" ColumnName="GoodsPic" />
+          <ScalarProperty Name="BuyCount" ColumnName="BuyCount" />
+          <ScalarProperty Name="GoodsPrice" ColumnName="GoodsPrice" />
+          <ScalarProperty Name="SkuInfo" ColumnName="SkuInfo" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
+          <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+          <ScalarProperty Name="ExpressName" ColumnName="ExpressName" />
+          <ScalarProperty Name="UnExpressNumber" ColumnName="UnExpressNumber" />
+          <ScalarProperty Name="PayPoints" ColumnName="PayPoints" />
+          <ScalarProperty Name="PayChongXiao" ColumnName="PayChongXiao" />
+          <ScalarProperty Name="PayCash" ColumnName="PayCash" />
+          <ScalarProperty Name="UnExpressName" ColumnName="UnExpressName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skus">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Sku)">
+        <MappingFragment StoreEntitySet="Skus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MemberMember" TypeName="Model1.MemberMember" StoreEntitySet="Members">
+      <EndProperty Name="Member1">
+        <ScalarProperty Name="Id" ColumnName="Referral_Id" />
+      </EndProperty>
+      <EndProperty Name="Member">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Referral_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MemberMemberLevel" TypeName="Model1.MemberMemberLevel" StoreEntitySet="Members">
+      <EndProperty Name="MemberLevel">
+        <ScalarProperty Name="Id" ColumnName="MemberLevel_Id" />
+      </EndProperty>
+      <EndProperty Name="Member">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BaoDanTransactionLockedCoin" TypeName="Model1.BaoDanTransactionLockedCoin" StoreEntitySet="LockedCoins">
+      <EndProperty Name="BaoDanTransaction">
+        <ScalarProperty Name="Id" ColumnName="BaoDanTransaction_Id" />
+      </EndProperty>
+      <EndProperty Name="LockedCoin">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MemberBankInfo" TypeName="Model1.MemberBankInfo" StoreEntitySet="BankInfo">
+      <EndProperty Name="Member">
+        <ScalarProperty Name="Id" ColumnName="Member_Id" />
+      </EndProperty>
+      <EndProperty Name="BankInfo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Member_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

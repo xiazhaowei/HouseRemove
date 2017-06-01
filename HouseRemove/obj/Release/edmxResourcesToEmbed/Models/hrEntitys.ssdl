@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hrEntitys.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="hrEntitysStoreContainer">
+    <EntitySet Name="Managers" EntityType="hrEntitys.Store.Managers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HRemoves" EntityType="hrEntitys.Store.HRemoves" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Householdes" EntityType="hrEntitys.Store.Householdes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LoginLogs" EntityType="hrEntitys.Store.LoginLogs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RedHeadFiles" EntityType="hrEntitys.Store.RedHeadFiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SystemSettings" EntityType="hrEntitys.Store.SystemSettings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SignInfos" EntityType="hrEntitys.Store.SignInfos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UnSignInfos" EntityType="hrEntitys.Store.UnSignInfos" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ManagerLoginLog" Association="hrEntitys.Store.ManagerLoginLog">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="LoginLog" EntitySet="LoginLogs" />
+    </AssociationSet>
+    <AssociationSet Name="HRemoveHousehold" Association="hrEntitys.Store.HRemoveHousehold">
+      <End Role="HRemove" EntitySet="HRemoves" />
+      <End Role="Household" EntitySet="Householdes" />
+    </AssociationSet>
+    <AssociationSet Name="HouseholdSignInfo" Association="hrEntitys.Store.HouseholdSignInfo">
+      <End Role="Household" EntitySet="Householdes" />
+      <End Role="SignInfo" EntitySet="SignInfos" />
+    </AssociationSet>
+    <AssociationSet Name="HouseholdUnSignInfo" Association="hrEntitys.Store.HouseholdUnSignInfo">
+      <End Role="Household" EntitySet="Householdes" />
+      <End Role="UnSignInfo" EntitySet="UnSignInfos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Managers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="HRemoves">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Householdes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HouseType" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="HouseProperty" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CompensationType" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="RemoveTime" Type="datetime" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="CardNumber" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Mobile" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="PubliclyOwned" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Successor" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BuildTime" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="HouseUseFor" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UseStatus" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="IsPartUse" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="LandParcel" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Area" Type="real" Nullable="false" />
+    <Property Name="UsefullArea" Type="real" Nullable="false" />
+    <Property Name="PropertyRightNumber" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="PropertyRightRemark" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="LesseeNumber" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="AssessPrice" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ZhuangxiuPrice" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="BusinessCompensation" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="YingFa" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ShiFa" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="SignStatus" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="InspectTime" Type="datetime" Nullable="true" />
+    <Property Name="InspectNumber" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="HRemoveId" Type="int" Nullable="false" />
+    <Property Name="ComAreaRenge" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="LoginLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoginTime" Type="datetime" Nullable="false" />
+    <Property Name="Ip" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Client" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ManagerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RedHeadFiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="PubTime" Type="datetime" Nullable="false" />
+    <Property Name="ZhiXingTime" Type="datetime" Nullable="false" />
+    <Property Name="Org" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="FilePath" Type="nvarchar" Nullable="true" MaxLength="300" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="SignInfos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SignNumber" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="CapitalNumber" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="GiveHouseTime" Type="datetime" Nullable="true" />
+    <Property Name="GetMoneyUser" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="GetMoneyTime" Type="datetime" Nullable="true" />
+    <Property Name="FileCabinetNumber" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="BatchNumber" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="Remark" Type="nvarchar" Nullable="true" MaxLength="400" />
+    <Property Name="Household_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UnSignInfos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnSignType" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="UnSignRemark" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="YueTanTime" Type="datetime" Nullable="true" />
+    <Property Name="YueTan2Time" Type="datetime" Nullable="true" />
+    <Property Name="YueTan3Time" Type="datetime" Nullable="true" />
+    <Property Name="PingGuBaoGaoTime" Type="datetime" Nullable="true" />
+    <Property Name="PingGuBaoGaoSongDaTime" Type="datetime" Nullable="true" />
+    <Property Name="BaoSongFaGuiKeTime" Type="datetime" Nullable="true" />
+    <Property Name="TuiJuanTime" Type="datetime" Nullable="true" />
+    <Property Name="ZaiCiSongBaoTime" Type="datetime" Nullable="true" />
+    <Property Name="DanHuBuChangXiaDaTime" Type="datetime" Nullable="true" />
+    <Property Name="DanHuBuChangSongDaTime" Type="datetime" Nullable="true" />
+    <Property Name="QiSuQiDaoQiTime" Type="datetime" Nullable="true" />
+    <Property Name="CuiGaoShuSongDaTime" Type="datetime" Nullable="true" />
+    <Property Name="QiangZhiZhiXingTiBaoFaGuiKeTime" Type="datetime" Nullable="true" />
+    <Property Name="FaYuanLiAnTime" Type="datetime" Nullable="true" />
+    <Property Name="XiaDaZhuiYuZhiXingCaiDingTime" Type="datetime" Nullable="true" />
+    <Property Name="CheHuiTime" Type="datetime" Nullable="true" />
+    <Property Name="CheHuiYuanYin" Type="nvarchar" Nullable="true" MaxLength="400" />
+    <Property Name="Household_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ManagerLoginLog">
+    <End Role="Manager" Type="hrEntitys.Store.Managers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LoginLog" Type="hrEntitys.Store.LoginLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LoginLog">
+        <PropertyRef Name="ManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HRemoveHousehold">
+    <End Role="HRemove" Type="hrEntitys.Store.HRemoves" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Household" Type="hrEntitys.Store.Householdes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRemove">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Household">
+        <PropertyRef Name="HRemoveId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HouseholdSignInfo">
+    <End Role="Household" Type="hrEntitys.Store.Householdes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SignInfo" Type="hrEntitys.Store.SignInfos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Household">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SignInfo">
+        <PropertyRef Name="Household_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HouseholdUnSignInfo">
+    <End Role="Household" Type="hrEntitys.Store.Householdes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UnSignInfo" Type="hrEntitys.Store.UnSignInfos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Household">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UnSignInfo">
+        <PropertyRef Name="Household_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

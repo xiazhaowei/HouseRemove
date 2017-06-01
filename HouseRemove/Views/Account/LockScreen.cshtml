@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "LockScreen";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<body class="lock-screen">
+    <div class="lock-wrapper">
+        <div class="panel lock-box text-center">
+            <img alt="lock avatar" src="/images/photos/user1.png">
+            <div class="locked">
+                <i class="fa fa-lock"></i>
+            </div>
+            <h1>@ViewBag.name</h1>
+            <div class="row">
+                <form action="/Account/Login" method="post" class="form-inline" role="form">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <input type="hidden" name="Mobile" value="@ViewBag.name" />
+                        <input type="password" name="Password" class="form-control lock-input" placeholder="Password">
+                        <button type="submit" class="btn btn-lock pull-right">
+                            <i class="fa fa-check"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <!-- Placed js at the end of the document so the pages load faster -->
+    
+</body>
+

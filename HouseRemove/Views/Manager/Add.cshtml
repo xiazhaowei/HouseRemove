@@ -1,0 +1,137 @@
+﻿@model HouseRemove.Models.ManagerViewModel
+@{
+    ViewBag.Title = "填写管理员信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- page heading start-->
+<div class="page-heading">
+    <h3>
+        用户信息
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">主页</a>
+        </li>
+        <li class="active"> 用户信息 </li>
+    </ul>
+</div>
+
+<!-- page heading end-->
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    用户信息
+                </header>
+                <div class="panel-body">
+
+                    <div class="form">
+                        <form class="cmxform form-horizontal adminex-form" id="commentForm" method="post" action="/Manager/Add" novalidate="novalidate">
+                            @Html.HiddenFor(model => model.Id)
+                            <div class="form-group ">
+                                <label for="InspectNumber" class="control-label col-lg-2">登录名称 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "", required = "" })
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="InspectNumber" class="control-label col-lg-2">密码 </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "", required = "" })
+                                </div>
+                            </div>
+                            @if (!string.IsNullOrEmpty(ViewBag.type))
+                            {
+                                @Html.HiddenFor(model => model.Role)
+                            }
+                            else
+                            {
+                                <div class="form-group ">
+                                    <label for="HouseType" class="control-label col-lg-2">角色 <span class="text-danger">*</span></label>
+                                    <div class="col-lg-6">
+                                        @{var RoleOption = new List<SelectListItem>();
+                                            RoleOption.Insert(0, new SelectListItem
+                                            {
+                                                Text = "管理员",
+                                                Value = "管理员",
+                                                Selected = ViewBag.Role == "管理员"
+                                            });
+                                            RoleOption.Insert(1, new SelectListItem
+                                            {
+                                                Text = "普通用户",
+                                                Value = "普通用户",
+                                                Selected = ViewBag.Role == "普通用户"
+                                            });
+                                        }
+                                        @Html.DropDownListFor(model => model.Role, RoleOption, new { @class = "form-control" })
+                                        <p class="help-block">只有管理员，有权创建和修改用户信息</p>
+                                    </div>
+                                </div>
+                              }
+
+
+                            @if (!string.IsNullOrEmpty(ViewBag.type))
+                            {
+                                @Html.HiddenFor(model => model.State)
+                            }
+                            else
+                            {
+                                <div class="form-group ">
+                                    <label for="HouseType" class="control-label col-lg-2">状态 <span class="text-danger">*</span></label>
+                                    <div class="col-lg-6">
+                                        @{
+                                            var StateOption = new List<SelectListItem>
+                                                ();
+                                            StateOption.Insert(0, new SelectListItem
+                                            {
+                                                Text = "正常",
+                                                Value = "正常",
+                                                Selected = ViewBag.State == "正常"
+                                            });
+                                            StateOption.Insert(1, new SelectListItem
+                                            {
+                                                Text = "锁定",
+                                                Value = "锁定",
+                                                Selected = ViewBag.State == "锁定"
+                                            });
+                                        }
+                                        @Html.DropDownListFor(model => model.State, StateOption, new { @class = "form-control" })
+                                        <p class="help-block">注意：用户被锁定后，将限制其登录</p>
+                                    </div>
+                                </div>
+                              }
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-6">
+                                    <button class="btn btn-primary" type="submit">保存</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <!--validate-->
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/validation-init.js")
+
+    <script>
+    $(document).ready(function(){
+            $(".custom-nav li").each(function(i,n){
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_setting').addClass("nav-active");
+            $(".subnav_manager").addClass("active");
+    });
+    </script>
+}

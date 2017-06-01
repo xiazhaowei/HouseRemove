@@ -1,0 +1,154 @@
+﻿@model HouseRemove.Models.RedHeadFileViewModel
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+
+    <!--pickers css-->
+    @Styles.Render("~/Scripts/bootstrap-datepicker/css/datepicker-custom.css")
+    <!--dropzone css-->
+    @Styles.Render("~/Scripts/dropzone/css/dropzone.css")
+}
+
+<!-- page heading start-->
+<div class="page-heading">
+    <h3>
+        添加红头文件
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Forms</a>
+        </li>
+        <li class="active">上传红头文件</li>
+    </ul>
+</div>
+<!-- page heading end-->
+<!--body wrapper start-->
+<div class="wrapper">
+    <section class="panel">
+        <header class="panel-heading">
+            红头文件上传
+            <span class="tools pull-right">
+                <a class="fa fa-chevron-down" href="javascript:;"></a>
+                <a class="fa fa-times" href="javascript:;"></a>
+            </span>
+        </header>
+        <div class="panel-body">
+            <form class="cmxform form-horizontal adminex-form" id="commentForm" method="post" action="/RedHeadFile/Add" novalidate="novalidate">
+                <div class="form-group ">
+                    <label for="HouseType" class="control-label col-lg-2">文件类型 <span class="text-danger">*</span></label>
+                    <div class="col-lg-6">
+                        @Html.HiddenFor(model => model.Id)
+                        @{
+                            var TypeOption = new List<SelectListItem>();
+                            TypeOption.Insert(0, new SelectListItem
+                            {
+                                Text = "声明",
+                                Value = "声明",
+                                Selected = ViewBag.Type == "声明"
+                            });
+                            TypeOption.Insert(1, new SelectListItem
+                            {
+                                Text = "公告",
+                                Value = "公告",
+                                Selected = ViewBag.Type == "公告"
+                            });
+                            TypeOption.Insert(2, new SelectListItem
+                            {
+                                Text = "公示",
+                                Value = "公示",
+                                Selected = ViewBag.Type == "公示"
+                            });
+                        }
+                        @Html.DropDownListFor(model => model.Type, TypeOption, new { @class = "form-control" })
+
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="InspectNumber" class="control-label col-lg-2">文件标题 </label>
+                    <div class="col-lg-6">                        
+                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "文件标题", required = "" })
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="InspectNumber" class="control-label col-lg-2">下发机关 </label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(model => model.Org, new { @class = "form-control", placeholder = "下发机关",required="" })
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="RemoveTime" class="control-label col-lg-2">发文时间 <span class="text-danger">*</span></label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(model => model.PubTime, new { @class = "form-control default-date-picker", placeholder = "发文时间", required = "", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="RemoveTime" class="control-label col-lg-2">执行时间 <span class="text-danger">*</span></label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(model => model.ZhiXingTime, new { @class = "form-control default-date-picker", placeholder = "执行时间", required = "", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InspectNumber" class="control-label col-lg-2">文件扫描件 </label>
+                    <div class="col-lg-10">
+                        <div type="text"  class="dropzone" id="my-awesome-dropzone" />
+                        <input type="hidden" name="FilePath"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-6">
+                        <button class="btn btn-primary" type="submit">保存</button>
+                    </div>
+                </div>
+            </form>
+
+            
+        </div>
+    </section>
+</div>
+<!--body wrapper end-->
+
+
+@section scripts{
+    
+    <!--pickers plugins-->
+    @Scripts.Render("~/Scripts/bootstrap-datepicker/js/bootstrap-datepicker.js")
+    <!--pickers initialization-->
+    @Scripts.Render("~/Scripts/pickers-init.js")
+    <!--validate-->
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/validation-init.js")
+<!--dropzone-->
+@Scripts.Render("~/Scripts/dropzone/dropzone.js")
+
+    <script>       
+
+        var files = [];
+        $("#my-awesome-dropzone").dropzone({
+            url: "/RedHeadFile/Upload",
+            maxFilesize: 5,
+            //addRemoveLinks: true,
+            acceptedFiles: ".gif,.jpg,.png",
+            success: function (file, data) {                
+                files.push(data);
+                $("input[name='FilePath']").val(files.join(';'));
+            },
+            init: function (file) {
+                
+            }
+        });
+        $(document).ready(function () {
+            $(".custom-nav li").each(function (i, n) {
+                $(n).removeClass("nav-active");
+                $(n).removeClass("active");
+            });
+
+            $('.nav_redheadfile').addClass("active");
+        });
+    </script>
+}
+
